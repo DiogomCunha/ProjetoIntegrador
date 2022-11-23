@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController
+    @RestController
     @RequestMapping("/dentista")//Para chamar metodo pela URL, após IP ou localhost / e porta que estiver rodando o Tomcat
     public class DentistaController {
 
