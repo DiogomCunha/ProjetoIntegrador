@@ -1,24 +1,18 @@
 package com.backend.ProjetoIntegrador.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.stereotype.Service;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
 @Entity
 @SequenceGenerator(name = "seq_dentista",sequenceName = "seq_dentista",allocationSize = 1,initialValue = 1)
 public class Dentista implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -64,6 +58,51 @@ public class Dentista implements Serializable {
     public Dentista() {
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSobreNome() {
+        return sobreNome;
+    }
+
+    public void setSobreNome(String sobreNome) {
+        this.sobreNome = sobreNome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getCadastro() {
+        return cadastro;
+    }
+
+    public void setCadastro(String cadastro) {
+        this.cadastro = cadastro;
+    }
+
+    public List<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(List<Consulta> consultas) {
+        this.consultas = consultas;
+    }
 }
