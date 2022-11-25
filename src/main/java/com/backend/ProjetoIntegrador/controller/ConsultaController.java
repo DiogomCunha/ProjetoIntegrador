@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/consulta")
 public class ConsultaController {
@@ -25,4 +27,37 @@ public class ConsultaController {
 
         return new ResponseEntity<Consulta>(consulta, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/listartodos") // exemplo: localhost:8080/consulta/listartodos
+    @ResponseBody
+    public ResponseEntity<List<Consulta>> listaConsulta(){
+
+        List<Consulta> consultas = consultaRepository.findAll();
+
+        return new ResponseEntity<List<Consulta>>(consultas,HttpStatus.OK);
+    };
+
+
+    @DeleteMapping(value = "delete/{idConsulta}")//string para chamar o metodo pela url
+    @ResponseBody//Descrição da resposta
+    public ResponseEntity<?> deletePach(@PathVariable Long idConsulta){
+        consultaRepository.deleteById(idConsulta); // recebe os id para deletar
+
+        return new ResponseEntity<String>("Consulta deletada",HttpStatus.OK);
+    }
+
+    @PutMapping(value = "atualizarConsulta")//string para chamar o metodo pela url
+    @ResponseBody//Descrição da resposta
+    public ResponseEntity<?> atualizarConsulta(@RequestBody Consulta consulta){// Solicita um objeto no formato JSON
+
+        if (consultaRepository.findById(consulta.getId()) == null){
+            ResponseEntity responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
+        Consulta con = consultaRepository.saveAndFlush(consulta); // recebe os dados para atualizar
+        return new ResponseEntity<Consulta>(con,HttpStatus.OK);
+    }
+
+
+
 }
