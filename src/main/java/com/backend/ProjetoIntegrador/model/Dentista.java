@@ -31,6 +31,7 @@ public class Dentista implements Serializable {
         this.id = id;
     }
 
+
     public Dentista(String nome, String sobreNome, String matricula, String cadastro) {
         this.nome = nome;
         this.sobreNome = sobreNome;
@@ -98,11 +99,21 @@ public class Dentista implements Serializable {
         this.cadastro = cadastro;
     }
 
-    public List<Consulta> getConsultas() {
-        return consultas;
-    }
+//    public List<Consulta> getConsultas() {
+//        return consultas;
+//    }
 
     public void setConsultas(List<Consulta> consultas) {
         this.consultas = consultas;
+    }
+
+    @Override
+    public String toString() {
+        return "Dentista{" +
+                "nome='" + nome + '\'' +
+                ", sobreNome='" + sobreNome + '\'' +
+                ", matricula='" + matricula + '\'' +
+                ", cadastro='" + cadastro + '\'' +
+                '}';
     }
 }

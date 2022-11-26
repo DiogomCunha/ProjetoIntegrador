@@ -35,9 +35,6 @@ public class Consulta implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getEspecialidade() {
         return especialidade;
@@ -55,8 +52,8 @@ public class Consulta implements Serializable {
         this.descricao = descricao;
     }
 
-    public Dentista getDentista() {
-        return dentista;
+    public String getDentista() {
+        return dentista.getNome();
     }
 
     public void setDentista(Dentista dentista) {

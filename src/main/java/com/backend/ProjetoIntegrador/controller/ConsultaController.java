@@ -58,6 +58,15 @@ public class ConsultaController {
         return new ResponseEntity<Consulta>(con,HttpStatus.OK);
     }
 
+    @GetMapping(value = "/buscarConsultaPorDentista/{idDentista}")
+    @ResponseBody
+    public ResponseEntity<List<Consulta>> buscarConsultas(@PathVariable Long idDentista){
+
+        List<Consulta> consultas = consultaRepository.buscarPorDentista(idDentista);
+
+        return new ResponseEntity<List<Consulta>>(consultas,HttpStatus.OK);
+    }
+
 
 
 }

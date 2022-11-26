@@ -1,13 +1,16 @@
 package com.backend.ProjetoIntegrador.controller;
 
 
+import com.backend.ProjetoIntegrador.model.Consulta;
 import com.backend.ProjetoIntegrador.model.Dentista;
+import com.backend.ProjetoIntegrador.repository.ConsultaRepository;
 import com.backend.ProjetoIntegrador.repository.DentistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -17,6 +20,8 @@ import java.util.List;
 
     @Autowired
     private DentistaRepository dentistaRepository;
+
+    private ConsultaRepository consultaRepository;
 
 
 
@@ -39,7 +44,7 @@ import java.util.List;
 
     Dentista dentistas = dentistaRepository.save(dentista);
 
-    return new ResponseEntity<Dentista>(dentista, HttpStatus.OK);
+    return new ResponseEntity<Dentista>(dentistas, HttpStatus.OK);
 
     }
 
@@ -67,23 +72,14 @@ import java.util.List;
         @GetMapping(value = "/buscarPorNome/{nome}")//string para chamar o metodo pela url
         @ResponseBody//Descrição da resposta
         public ResponseEntity<List<Dentista>> buscarpornomePath(@PathVariable(name = "nome") String nome){
-            List<Dentista> dentista = dentistaRepository.buscarPorNome(nome.trim().toLowerCase()); //
+            List<Dentista> dentistas = dentistaRepository.buscarPorNome(nome.trim().toLowerCase()); //
 
-
-
-            return new ResponseEntity<List<Dentista>>(dentista,HttpStatus.OK);
+            return new ResponseEntity<List<Dentista>>(dentistas,HttpStatus.OK);
         }
 
 
-//        @GetMapping(value = "buscarPorNome")//string para chamar o metodo pela url
-//        @ResponseBody//Descrição da resposta
-//        public ResponseEntity<List<Dentista>> buscarpornome(@RequestParam(name = "nome") String nome){
-//            List<Dentista> dentista = dentistaRepository.buscarPorNome(nome.trim().toLowerCase()); //
-//
-//
-//
-//            return new ResponseEntity<List<Dentista>>(dentista,HttpStatus.OK);
-//        }
+
+
 
 
 }
