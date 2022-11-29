@@ -3,6 +3,7 @@ package com.backend.ProjetoIntegrador.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -18,7 +19,13 @@ public class Paciente implements Serializable {
     private String sobrenome;
     private String cpf;
     private Date data;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "Id_endereco")
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "paciente")
+    private List<Consulta> consultas;
 
     public Paciente() {
     }
