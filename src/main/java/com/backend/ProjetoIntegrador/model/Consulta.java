@@ -65,7 +65,7 @@ public class Consulta implements Serializable {
         this.dentista = dentista;
     }
 
-    public Paciente getPaciente() { return paciente; }
+    public String getPaciente() { return paciente.getNome(); }
 
     public void setPaciente(Paciente paciente) { this.paciente = paciente; }
 }

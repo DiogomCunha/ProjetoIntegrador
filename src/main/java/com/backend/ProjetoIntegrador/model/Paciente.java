@@ -18,9 +18,9 @@ public class Paciente implements Serializable {
     private String nome;
     private String sobrenome;
     private String cpf;
-    private Date data;
+    private String data;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "Id_endereco")
     private Endereco endereco;
 
@@ -30,7 +30,7 @@ public class Paciente implements Serializable {
     public Paciente() {
     }
 
-    public Paciente(long id, String nome, String sobrenome, String cpf, Date data, Endereco endereco) {
+    public Paciente(long id, String nome, String sobrenome, String cpf, String data, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -39,12 +39,19 @@ public class Paciente implements Serializable {
         this.endereco = endereco;
     }
 
-    public Paciente(String nome, String sobrenome, String cpf, Date data, Endereco endereco) {
+    public Paciente(String nome, String sobrenome, String cpf, String data, Endereco endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.data = data;
         this.endereco = endereco;
+    }
+
+    public Paciente(String nome, String sobrenome, String cpf, String data) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.cpf = cpf;
+        this.data = data;
     }
 
     public long getId() {
@@ -79,11 +86,11 @@ public class Paciente implements Serializable {
         this.cpf = cpf;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
