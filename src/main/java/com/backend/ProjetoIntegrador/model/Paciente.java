@@ -19,7 +19,7 @@ public class Paciente implements Serializable {
     private String cpf;
     private String data;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "Id_endereco")
     private Endereco endereco;
 

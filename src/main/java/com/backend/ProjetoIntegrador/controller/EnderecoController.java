@@ -21,4 +21,9 @@ public class EnderecoController {
         Endereco enderecos = enderecoRepository.save(endereco);
         return new ResponseEntity<Endereco>(endereco, HttpStatus.OK);
     }
+
+    // deletar
+
+    //update
+
 }

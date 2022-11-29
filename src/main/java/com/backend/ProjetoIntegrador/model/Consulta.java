@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 
 @Entity
-@SequenceGenerator(name = "seq_consulta",sequenceName = "seq_consulta",allocationSize = 1,initialValue = 1)
+@SequenceGenerator(name = "seq_consulta", sequenceName = "seq_consulta",allocationSize = 1,initialValue = 1)
 public class Consulta implements Serializable {
     private static final long serialVersionUID = 1L;
 

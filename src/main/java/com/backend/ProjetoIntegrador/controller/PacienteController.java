@@ -30,4 +30,8 @@ public class PacienteController {
         Paciente pacientes = pacienteRepository.save(paciente);
         return new ResponseEntity<Paciente>(paciente,HttpStatus.OK);
     }
+
+    //deletar
+
+    //update
 }

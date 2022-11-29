@@ -20,8 +20,8 @@ public class Endereco implements Serializable {
     private String estado;
 
 
-    @OneToMany(mappedBy = "endereco",fetch = FetchType.LAZY)
-    private List<Paciente> paciente;
+    @OneToOne(mappedBy = "endereco",fetch = FetchType.LAZY)
+    private Paciente paciente;
 
     public Endereco() {
     }
@@ -43,7 +43,7 @@ public class Endereco implements Serializable {
         this.estado = estado;
     }
 
-    public Endereco(String rua, String num, String bairro, String cidade, String estado, List<Paciente> paciente) {
+    public Endereco(String rua, String num, String bairro, String cidade, String estado, Paciente paciente) {
         this.rua = rua;
         this.num = num;
         this.bairro = bairro;
@@ -104,7 +104,7 @@ public class Endereco implements Serializable {
 //        return paciente;
 //    }
 
-    public void setPaciente(List<Paciente> paciente) {
+    public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
 
