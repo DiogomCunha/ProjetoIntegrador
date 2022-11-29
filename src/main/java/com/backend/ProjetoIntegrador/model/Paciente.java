@@ -20,7 +20,7 @@ public class Paciente implements Serializable {
     private String cpf;
     private Date data;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "Id_endereco")
     private Endereco endereco;
 

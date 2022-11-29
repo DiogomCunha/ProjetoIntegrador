@@ -2,6 +2,7 @@ package com.backend.ProjetoIntegrador.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @SequenceGenerator(name = "seq_endereco",sequenceName = "seq_endereco",allocationSize = 1,initialValue = 1)
@@ -19,7 +20,7 @@ public class Endereco implements Serializable {
     private String estado;
 
     @OneToMany(mappedBy = "endereco",fetch = FetchType.LAZY)
-    private Paciente paciente;
+    private List<Paciente> paciente;
 
     public Endereco() {
     }
