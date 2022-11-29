@@ -20,6 +20,7 @@ public class Paciente implements Serializable {
     private String cpf;
     private String data;
 
+
     @ManyToOne
     @JoinColumn(name = "Id_endereco")
     private Endereco endereco;
