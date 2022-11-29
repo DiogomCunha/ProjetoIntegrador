@@ -71,7 +71,7 @@ ao longo do curso você aprenderá a integrar todas essas partes.
 
 **Sprint 2 (final da semana 4)**
 
-* Durante este sprint, com tudo que foi aprendido no curso a partir da aula 18, você
+*[x] Durante este sprint, com tudo que foi aprendido no curso a partir da aula 18, você
 poderá trabalhar com o Maven em seu projeto para referenciar suas bibliotecas e,
 * a partir da aula 24, poderá construir suas classes DAO (camada de acesso a dados
 com JDBC ) e as classes de serviço (camada de negócios) para cada uma das
@@ -80,7 +80,7 @@ funcionamento de tudo o que construir usando testes unitários.
 
 **Sprint 3 (final da semana 6)**
 
-* Ao longo deste sprint, você estará refatorando a camada de acesso a dados para
+*[x] Ao longo deste sprint, você estará refatorando a camada de acesso a dados para
 poder acessar e recuperar dados por meio de um ORM. Criando os mapeamentos
 e as classes de Repositório que serão substituídas pelos DAOs que cumprem a
 mesma função.
@@ -103,18 +103,18 @@ adicionar um login do Spring Security ao seu projeto.
 *[x] Testes unitários das classes Java
 
 ### Sprint 2
-1. Trabalhar com o Maven
-2. Construir suas classes DAO (camada de acesso a dados com JDBC ) e as classes de
+1.[x] Trabalhar com o Maven
+2.[x] Construir suas classes DAO (camada de acesso a dados com JDBC ) e as classes de
 serviço (camada de negócios) para cada uma das entidades em seu projeto.
-3. Testes unitários.
+3.[] Testes unitários.
 
 ### Sprint 3
-1. Refatorando a camada de acesso a dados para poder acessar e recuperar dados por
+1. [x] Refatorando a camada de acesso a dados para poder acessar e recuperar dados por
 meio de um ORM.
-2. Criando os mapeamentos e as classes de Repositório que serão substituídas pelos
+2. [x] Criando os mapeamentos e as classes de Repositório que serão substituídas pelos
 DAOs que cumprem a mesma função.
-3. Construir as APIs (através do desenvolvimento dos controladores) e a integração com
-a camada de apresentação, ou seja, as telas HTML através de JavaScript.
+3. [x] Construir as APIs (através do desenvolvimento dos controladores).
+4.[] Integração com a camada de apresentação, ou seja, as telas HTML através de JavaScript.
 
 ### Sprint 4
-1. Adicionar um login do Spring Security ao seu projeto.
+1.[] Adicionar um login do Spring Security ao seu projeto.

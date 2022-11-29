@@ -15,4 +15,7 @@ public interface ConsultaRepository extends JpaRepository<Consulta,Long> {
     @Query(value = "select u from Consulta u where u.dentista.id = ?1")
     List<Consulta> buscarPorDentista(Long idDentista);
 
+    @Query(value = "select u from Consulta u where u.paciente.id = ?1")
+    List<Consulta> buscarPorPaciente(Long idPaciente);
+
 }

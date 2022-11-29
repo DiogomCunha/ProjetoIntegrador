@@ -3,6 +3,7 @@ package com.backend.ProjetoIntegrador.controller;
 
 import com.backend.ProjetoIntegrador.model.Consulta;
 import com.backend.ProjetoIntegrador.model.Dentista;
+import com.backend.ProjetoIntegrador.model.Paciente;
 import com.backend.ProjetoIntegrador.repository.ConsultaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -60,9 +61,18 @@ public class ConsultaController {
 
     @GetMapping(value = "/buscarConsultaPorDentista/{idDentista}")
     @ResponseBody
-    public ResponseEntity<List<Consulta>> buscarConsultas(@PathVariable Long idDentista){
+    public ResponseEntity<List<Consulta>> buscarConsultasDentista(@PathVariable Long idDentista){
 
         List<Consulta> consultas = consultaRepository.buscarPorDentista(idDentista);
+
+        return new ResponseEntity<List<Consulta>>(consultas,HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/buscarConsultaPorPaciente/{idPaciente}")
+    @ResponseBody
+    public ResponseEntity<List<Consulta>> buscarConsultasPaciente(@PathVariable Long idPaciente){
+
+        List<Consulta> consultas = consultaRepository.buscarPorPaciente(idPaciente);
 
         return new ResponseEntity<List<Consulta>>(consultas,HttpStatus.OK);
     }

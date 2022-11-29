@@ -43,6 +43,15 @@ public class Endereco implements Serializable {
         this.estado = estado;
     }
 
+    public Endereco(String rua, String num, String bairro, String cidade, String estado, List<Paciente> paciente) {
+        this.rua = rua;
+        this.num = num;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.paciente = paciente;
+    }
+
     public long getId() {
         return id;
     }
@@ -89,6 +98,14 @@ public class Endereco implements Serializable {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+//    public List<Paciente> getPaciente() {
+//        return paciente;
+//    }
+
+    public void setPaciente(List<Paciente> paciente) {
+        this.paciente = paciente;
     }
 
     @Override

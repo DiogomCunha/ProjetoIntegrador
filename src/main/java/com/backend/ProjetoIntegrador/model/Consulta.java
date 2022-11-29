@@ -19,7 +19,6 @@ public class Consulta implements Serializable {
     @JoinColumn(name = "Id_dentista")
     private Dentista dentista;
 
-    //private Paciente paciente;
     @ManyToOne
     @JoinColumn(name = "Id_paciente")
     private Paciente paciente;
@@ -65,7 +64,9 @@ public class Consulta implements Serializable {
         this.dentista = dentista;
     }
 
-    public String getPaciente() { return paciente.getNome(); }
+    public String getPaciente() {
+        return paciente.getNome();
+    }
 
     public void setPaciente(Paciente paciente) { this.paciente = paciente; }
 }

@@ -13,13 +13,11 @@ public class Paciente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private long id;
     private String nome;
     private String sobrenome;
     private String cpf;
     private String data;
-
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "Id_endereco")
@@ -29,6 +27,10 @@ public class Paciente implements Serializable {
     private List<Consulta> consultas;
 
     public Paciente() {
+    }
+
+    public Paciente(long id) {
+        this.id = id;
     }
 
     public Paciente(long id, String nome, String sobrenome, String cpf, String data, Endereco endereco) {
@@ -55,13 +57,19 @@ public class Paciente implements Serializable {
         this.data = data;
     }
 
+    public Paciente(String nome, String sobrenome, String cpf, String data, Endereco endereco, List<Consulta> consultas) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.cpf = cpf;
+        this.data = data;
+        this.endereco = endereco;
+        this.consultas = consultas;
+    }
+
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -95,13 +103,23 @@ public class Paciente implements Serializable {
         this.data = data;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+//    public List<Consulta> getConsultas() {
+//        return consultas;
+//    }
+
+    public void setConsultas(List<Consulta> consultas) {
+        this.consultas = consultas;
     }
+
+//        public String getEndereco() {
+//        return endereco.getCidade();
+//    }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+
 
     @Override
     public String toString() {

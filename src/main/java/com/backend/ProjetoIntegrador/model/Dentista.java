@@ -27,10 +27,13 @@ public class Dentista implements Serializable {
     @OneToMany(mappedBy = "dentista")
   private List<Consulta> consultas;
 
+
+    public Dentista() {
+    }
+
     public Dentista(long id) {
         this.id = id;
     }
-
 
     public Dentista(String nome, String sobreNome, String matricula, String cadastro) {
         this.nome = nome;
@@ -56,8 +59,7 @@ public class Dentista implements Serializable {
         this.consultas = consultas;
     }
 
-    public Dentista() {
-    }
+
 
     public long getId() {
         return id;
