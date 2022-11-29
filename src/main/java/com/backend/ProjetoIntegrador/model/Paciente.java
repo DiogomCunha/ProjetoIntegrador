@@ -21,7 +21,7 @@ public class Paciente implements Serializable {
     private String data;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "Id_endereco")
     private Endereco endereco;
 

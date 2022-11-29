@@ -19,7 +19,8 @@ public class Endereco implements Serializable {
     private String cidade;
     private String estado;
 
-    @OneToMany(mappedBy = "endereco")
+
+    @OneToMany(mappedBy = "endereco",fetch = FetchType.LAZY)
     private List<Paciente> paciente;
 
     public Endereco() {
