@@ -1,6 +1,7 @@
 package com.backend.ProjetoIntegrador.controller;
 
 
+import com.backend.ProjetoIntegrador.model.Dentista;
 import com.backend.ProjetoIntegrador.model.Paciente;
 import com.backend.ProjetoIntegrador.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,24 @@ public class PacienteController {
         return new ResponseEntity<Paciente>(paciente,HttpStatus.OK);
     }
 
-    //deletar
+
+    @DeleteMapping(value = "/delete/{idPaciente}")
+    @ResponseBody
+    public ResponseEntity<?> delete(@PathVariable Long idPaciente) {
+        pacienteRepository.deleteById(idPaciente);
+        return new ResponseEntity<String>("paciente deletado", HttpStatus.OK);
+    }
 
     //update
+    @PutMapping(value = "atualizarPaciente")//string para chamar o metodo pela url
+    @ResponseBody//Descrição da resposta
+    public ResponseEntity<?> atualizarUser(@RequestBody Paciente paciente){// Solicita um objeto no formato JSON
+
+        if (pacienteRepository.findById(paciente.getId()) == null){
+            ResponseEntity responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
+        Paciente user = pacienteRepository.saveAndFlush(paciente); // recebe os dados para atualizar
+        return new ResponseEntity<Paciente>(user,HttpStatus.OK);
+    }
 }
