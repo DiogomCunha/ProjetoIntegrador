@@ -1,6 +1,7 @@
 package com.backend.ProjetoIntegrador.controller;
 
 import com.backend.ProjetoIntegrador.model.Endereco;
+import com.backend.ProjetoIntegrador.model.Paciente;
 import com.backend.ProjetoIntegrador.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ public class EnderecoController {
 
     @PostMapping(value = "/salvar")
     @ResponseBody
-    public ResponseEntity<?> salvar(@RequestBody Endereco endereco){
+    public ResponseEntity<?> salvar(@RequestBody Endereco endereco) {
 
         Endereco enderecos = enderecoRepository.save(endereco);
         return new ResponseEntity<Endereco>(endereco, HttpStatus.OK);
@@ -31,5 +32,15 @@ public class EnderecoController {
     }
 
     //update
+    @PutMapping(value = "atualizarEndereco")
+    @ResponseBody
+    public ResponseEntity<?> atualizarDirecao(@RequestBody Endereco endereco) {
 
+        if (enderecoRepository.findById(endereco.getId()) == null) {
+            ResponseEntity responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
+        Endereco Direcao = enderecoRepository.saveAndFlush(endereco);
+        return new ResponseEntity<Endereco>(endereco, HttpStatus.OK);
+    }
 }
