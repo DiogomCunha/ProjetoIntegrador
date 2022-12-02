@@ -23,6 +23,12 @@ public class EnderecoController {
     }
 
     // deletar
+    @DeleteMapping(value = "/delete/{idEndereco}")
+    @ResponseBody
+    public ResponseEntity<?> delete(@PathVariable Long idEndereco) {
+        enderecoRepository.deleteById(idEndereco);
+        return new ResponseEntity<String>("endereco deletado", HttpStatus.OK);
+    }
 
     //update
 
