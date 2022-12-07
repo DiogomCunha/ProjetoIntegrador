@@ -24,6 +24,9 @@ public class Dentista implements Serializable {
 
     private String cadastro;
 
+
+    @OneToOne(mappedBy = "dentista",fetch = FetchType.LAZY)
+    private Login login;
     @OneToMany(mappedBy = "dentista")
   private List<Consulta> consultas;
 

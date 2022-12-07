@@ -2,7 +2,6 @@ package com.backend.ProjetoIntegrador.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 
@@ -19,6 +18,9 @@ public class Paciente implements Serializable {
     private String cpf;
     private String data;
 
+    @OneToOne(mappedBy = "paciente",fetch = FetchType.LAZY)
+    private Login login;
+
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "Id_endereco")
     private Endereco endereco;
@@ -26,12 +28,14 @@ public class Paciente implements Serializable {
     @OneToMany(mappedBy = "paciente")
     private List<Consulta> consultas;
 
+
     public Paciente() {
     }
 
     public Paciente(long id) {
         this.id = id;
     }
+
 
     public Paciente(long id, String nome, String sobrenome, String cpf, String data, Endereco endereco) {
         this.id = id;

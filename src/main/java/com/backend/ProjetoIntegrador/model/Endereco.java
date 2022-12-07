@@ -6,7 +6,6 @@ import java.util.List;
 
 @Entity
 @SequenceGenerator(name = "seq_endereco",sequenceName = "seq_endereco",allocationSize = 1,initialValue = 1)
-
 public class Endereco implements Serializable {
     private static final long serialVersionUID = 1l;
 
