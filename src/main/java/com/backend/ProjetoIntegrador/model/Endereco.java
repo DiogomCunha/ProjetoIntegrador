@@ -19,7 +19,7 @@ public class Endereco implements Serializable {
     private String estado;
 
 
-    @OneToOne(mappedBy = "endereco",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "endereco",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Paciente paciente;
 
     public Endereco() {

@@ -2,6 +2,8 @@ package com.backend.ProjetoIntegrador.model;
 
 
 
+import com.backend.ProjetoIntegrador.login.LoginDentista;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,9 +27,9 @@ public class Dentista implements Serializable {
     private String cadastro;
 
 
-    @OneToOne(mappedBy = "dentista",fetch = FetchType.LAZY)
-    private Login login;
-    @OneToMany(mappedBy = "dentista")
+    @OneToOne(mappedBy = "dentista",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private LoginDentista loginDentista;
+    @OneToMany(mappedBy = "dentista",cascade = CascadeType.ALL)
   private List<Consulta> consultas;
 
 

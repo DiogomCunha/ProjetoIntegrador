@@ -1,5 +1,7 @@
 package com.backend.ProjetoIntegrador.model;
 
+import com.backend.ProjetoIntegrador.login.LoginPaciente;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -19,13 +21,13 @@ public class Paciente implements Serializable {
     private String data;
 
     @OneToOne(mappedBy = "paciente",fetch = FetchType.LAZY)
-    private Login login;
+    private LoginPaciente login;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_endereco")
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "paciente")
+    @OneToMany(mappedBy = "paciente",cascade = CascadeType.ALL)
     private List<Consulta> consultas;
 
 

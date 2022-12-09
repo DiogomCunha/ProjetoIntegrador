@@ -15,11 +15,11 @@ public class Consulta implements Serializable {
     private String especialidade;
     private String descricao;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_dentista")
     private Dentista dentista;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_paciente")
     private Paciente paciente;
 

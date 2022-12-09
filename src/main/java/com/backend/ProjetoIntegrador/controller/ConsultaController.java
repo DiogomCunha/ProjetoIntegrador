@@ -1,6 +1,7 @@
 package com.backend.ProjetoIntegrador.controller;
 
 
+import com.backend.ProjetoIntegrador.exceptions.ResourceNotFoundException;
 import com.backend.ProjetoIntegrador.model.Consulta;
 import com.backend.ProjetoIntegrador.model.Dentista;
 import com.backend.ProjetoIntegrador.model.Paciente;
@@ -22,12 +23,23 @@ public class ConsultaController {
 
     @PostMapping(value = "/salvar")
     @ResponseBody
-    public ResponseEntity<?> salvar(@RequestBody Consulta consulta){
-        Consulta consultas = consultaRepository.save(consulta);
+    public ResponseEntity<?> salvar(@RequestBody Consulta consulta) throws ResourceNotFoundException {
 
-
-        return new ResponseEntity<Consulta>(consulta, HttpStatus.OK);
+        try {
+            Consulta consultas = consultaRepository.save(consulta);
+            return new ResponseEntity<Consulta>(consulta, HttpStatus.OK);
+        }catch (Exception e){
+            throw new ResourceNotFoundException("Não foi possivel adicionar uma consulta");
+        }
     }
+
+    @ExceptionHandler
+    public ResponseEntity<String> processarErrorNotFound(ResourceNotFoundException ex){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getLocalizedMessage());
+    }
+
+
+
 
     @GetMapping(value = "/listartodos") // exemplo: localhost:8080/consulta/listartodos
     @ResponseBody
