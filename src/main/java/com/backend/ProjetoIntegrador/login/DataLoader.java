@@ -1,28 +1,30 @@
 package com.backend.ProjetoIntegrador.login;
 
-import com.backend.ProjetoIntegrador.repository.LoginPacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DataLoader implements ApplicationRunner {
 
-    private LoginPacienteRepository loginPacienteRepository;
+
+    private PacienteUserRopository pacienteUserRopository;
 
     @Autowired
-    public DataLoader(LoginPacienteRepository loginPacienteRepository) {
-        this.loginPacienteRepository = loginPacienteRepository;
+    public DataLoader(PacienteUserRopository pacienteUserRopository) {
+        this.pacienteUserRopository = pacienteUserRopository;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String password = passwordEncoder.encode("senha1");
+        String senha = passwordEncoder.encode("1234");
+        String senha2 = passwordEncoder.encode("1234");
 
-
-
-        loginPacienteRepository.save(new LoginPaciente("jose",password,UserRoles.ROLE_PACIENTE));
-
+        pacienteUserRopository.save(new PacienteUser("José","jose","jose@dh.com",senha,PacienteUserRoles.ROLE_USER));
+        pacienteUserRopository.save(new PacienteUser("José2","jose2","jose2@dh.com",senha2,PacienteUserRoles.ROLE_ADMIN));
     }
 }
