@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PacienteUserController {
+public class AppUserController {
 
 
     @GetMapping("/")
@@ -21,4 +21,8 @@ public class PacienteUserController {
     public String adminn(){
         return "<h1> Hello World Welcome  admin</h1>";
     }
+
+
+
+
 }

@@ -1,9 +1,8 @@
 package com.backend.ProjetoIntegrador;
 
 
-import com.backend.ProjetoIntegrador.login.PacienteUser;
-import com.backend.ProjetoIntegrador.login.PacienteUserRoles;
-import com.backend.ProjetoIntegrador.login.PacienteUserRopository;
+import com.backend.ProjetoIntegrador.login.AppUsers;
+import com.backend.ProjetoIntegrador.login.AppUserRoles;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,7 +16,7 @@ public class ProjetoIntegradorApplication {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		String senha = bCryptPasswordEncoder.encode("123");
 
-		PacienteUser pacienteUser = new PacienteUser("jose","jose","jose2@dh.com",senha, PacienteUserRoles.ROLE_USER);
+		AppUsers pacienteUser = new AppUsers("jose","jose","jose2@dh.com",senha, AppUserRoles.ROLE_USER);
 
 
 

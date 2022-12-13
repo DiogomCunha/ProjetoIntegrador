@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements ApplicationRunner {
 
 
-    private PacienteUserRopository pacienteUserRopository;
+    private AppUserRopository pacienteUserRopository;
 
     @Autowired
-    public DataLoader(PacienteUserRopository pacienteUserRopository) {
+    public DataLoader(AppUserRopository pacienteUserRopository) {
         this.pacienteUserRopository = pacienteUserRopository;
     }
 
@@ -21,10 +21,10 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String senha = passwordEncoder.encode("1234");
+        String senha = passwordEncoder.encode("1234 ");
         String senha2 = passwordEncoder.encode("1234");
 
-        pacienteUserRopository.save(new PacienteUser("José","jose","jose@dh.com",senha,PacienteUserRoles.ROLE_USER));
-        pacienteUserRopository.save(new PacienteUser("José2","jose2","jose2@dh.com",senha2,PacienteUserRoles.ROLE_ADMIN));
+        pacienteUserRopository.save(new AppUsers("José","jose","jose@dh.com",senha, AppUserRoles.ROLE_USER));
+        pacienteUserRopository.save(new AppUsers("José2","jose2","jose2@dh.com",senha2, AppUserRoles.ROLE_ADMIN));
     }
 }

@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Entity
-public class PacienteUser implements UserDetails {
+public class AppUsers implements UserDetails {
 
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
@@ -18,23 +18,20 @@ public class PacienteUser implements UserDetails {
     private String nome;
     private String username;
     private String email;
-    private String senha;
+    private String password;
     @Enumerated(EnumType.STRING)
-    private PacienteUserRoles pacienteUserRoles;
+    private AppUserRoles pacienteUserRoles;
 
-    public PacienteUser() {
+    public AppUsers() {
     }
 
-    public PacienteUser(String nome, String username, String email, String senha, PacienteUserRoles pacienteUserRoles) {
+    public AppUsers(String nome, String username, String email, String password, AppUserRoles pacienteUserRoles) {
         this.nome = nome;
         this.username = username;
         this.email = email;
-        this.senha = senha;
+        this.password = password;
         this.pacienteUserRoles = pacienteUserRoles;
     }
-
-
-
 
     public Long getId() {
         return id;
@@ -60,12 +57,14 @@ public class PacienteUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+     return password;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -99,19 +98,16 @@ public class PacienteUser implements UserDetails {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public PacienteUserRoles getPacienteUserRoles() {
+    public AppUserRoles getPacienteUserRoles() {
         return pacienteUserRoles;
     }
 
-    public void setPacienteUserRoles(PacienteUserRoles pacienteUserRoles) {
+    public void setPacienteUserRoles(AppUserRoles pacienteUserRoles) {
         this.pacienteUserRoles = pacienteUserRoles;
     }
 }
