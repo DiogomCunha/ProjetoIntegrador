@@ -13,10 +13,6 @@ public class ProjetoIntegradorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoIntegradorApplication.class, args);
 
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		String senha = bCryptPasswordEncoder.encode("123");
-
-		AppUsers pacienteUser = new AppUsers("jose","jose","jose2@dh.com",senha, AppUserRoles.ROLE_USER);
 
 
 

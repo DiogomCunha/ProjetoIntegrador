@@ -7,6 +7,7 @@ import com.backend.ProjetoIntegrador.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,4 +54,14 @@ public class PacienteController {
         Paciente user = pacienteRepository.saveAndFlush(paciente); // recebe os dados para atualizar
         return new ResponseEntity<Paciente>(user,HttpStatus.OK);
     }
+
+
+    @GetMapping(value = "/buscarPorNome/{nome}")//string para chamar o metodo pela url
+    @ResponseBody//Descrição da resposta
+    public ResponseEntity<List<Paciente>> buscarpornomePath(@PathVariable(name = "nome") String nome){
+        List<Paciente> pacientes = pacienteRepository.buscarPorNome(nome.trim().toLowerCase()); //
+
+        return new ResponseEntity<List<Paciente>>(pacientes,HttpStatus.OK);
+    }
+
 }

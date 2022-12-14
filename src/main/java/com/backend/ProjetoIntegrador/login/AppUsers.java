@@ -1,5 +1,7 @@
 package com.backend.ProjetoIntegrador.login;
 
+import com.backend.ProjetoIntegrador.model.Dentista;
+import com.backend.ProjetoIntegrador.model.Paciente;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,8 +21,16 @@ public class AppUsers implements UserDetails {
     private String username;
     private String email;
     private String password;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Id_paciente")
+    private Paciente paciente;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Id_dentista")
+    private Dentista dentista;
     @Enumerated(EnumType.STRING)
-    private AppUserRoles pacienteUserRoles;
+    private AppUserRoles appUserRoles;
 
     public AppUsers() {
     }
@@ -30,7 +40,25 @@ public class AppUsers implements UserDetails {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.pacienteUserRoles = pacienteUserRoles;
+        this.appUserRoles = pacienteUserRoles;
+    }
+
+    public AppUsers(String nome, String username, String email, String password, Paciente paciente, AppUserRoles appUserRoles) {
+        this.nome = nome;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.paciente = paciente;
+        this.appUserRoles = appUserRoles;
+    }
+
+    public AppUsers(String nome, String username, String email, String password, Dentista dentista, AppUserRoles appUserRoles) {
+        this.nome = nome;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.dentista = dentista;
+        this.appUserRoles = appUserRoles;
     }
 
     public Long getId() {
@@ -51,7 +79,7 @@ public class AppUsers implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(pacienteUserRoles.name());
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(appUserRoles.name());
         return Collections.singleton(simpleGrantedAuthority);
     }
 
@@ -103,11 +131,28 @@ public class AppUsers implements UserDetails {
         this.password = password;
     }
 
-    public AppUserRoles getPacienteUserRoles() {
-        return pacienteUserRoles;
+    public AppUserRoles getAppUserRoles() {
+        return appUserRoles;
     }
 
-    public void setPacienteUserRoles(AppUserRoles pacienteUserRoles) {
-        this.pacienteUserRoles = pacienteUserRoles;
+    public void setAppUserRoles(AppUserRoles appUserRoles) {
+        this.appUserRoles = appUserRoles;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Dentista getDentista() {
+        return dentista;
+    }
+
+    public void setDentista(Dentista dentista) {
+        this.dentista = dentista;
     }
 }
+

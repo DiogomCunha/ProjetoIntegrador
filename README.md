@@ -3,11 +3,11 @@
 Integrantes:
 
 - Angel Ontiveros
-- Diogo de Moraes
+- Diogo de Moraes Cunha
 - Josemar Silva Nascimento
-- José Sousa
+- José Sousa Cruz
 - Marcos Araujo
-- Rubens de Andrade
+- Rubens de Andrade Neto
 
 ## Sistema de reserva de consultas
 Desejamos **implementar um sistema que permita administrar a reserva / marcação
@@ -114,7 +114,7 @@ meio de um ORM.
 2. [x] Criando os mapeamentos e as classes de Repositório que serão substituídas pelos
 DAOs que cumprem a mesma função.
 3. [x] Construir as APIs (através do desenvolvimento dos controladores).
-4.[] Integração com a camada de apresentação, ou seja, as telas HTML através de JavaScript.
+4.[Não foi necessario] Integração com a camada de apresentação, ou seja, as telas HTML através de JavaScript.
 
 ### Sprint 4
-1.[] Adicionar um login do Spring Security ao seu projeto.
+1.[x] Adicionar um login do Spring Security ao seu projeto.
